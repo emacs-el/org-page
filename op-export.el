@@ -723,7 +723,8 @@ PUB-BASE-DIR is the root publication directory."
           ("items" (--map (ht ("item-title" (plist-get it :title))
                               ("item-link" (get-full-url (plist-get it :uri)))
                               ("item-description" (plist-get it :description))
-                              ("item-update-date" (plist-get it :mod-date)))
+                              ("item-update-date" (plist-get it :mod-date))
+                              ("item-date" (plist-get it :date)))
                           last-10-posts))))
      (concat pub-base-dir "rss.xml"))))
 
