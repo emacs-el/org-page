@@ -392,9 +392,7 @@ publication directory."
        (file-to-string (concat (op/get-template-dir) "container.mustache")))
       (ht ("header"
            (op/render-header
-            (ht ("page-title" (concat op/site-main-title
-                                      " - "
-                                      op/site-sub-title))
+            (ht ("page-title" op/site-main-title)
                 ("author" (or user-full-name "Unknown Author")))))
           ("nav" (op/render-navigation-bar))
           ("content"
