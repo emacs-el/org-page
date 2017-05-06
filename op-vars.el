@@ -145,11 +145,11 @@ default value is `op/get-file-category'."
   :group 'org-page :type 'string)
 
 (defvar op/category-config-alist
-  '(("blog" ;; this is the default configuration
+  '(("episodes" ;; this is the default configuration
     :show-meta t
     :show-comment t
     :uri-generator op/generate-uri
-    :uri-template "/blog/%y/%m/%d/%t/"
+    :uri-template "/episodes/%y/%m/%d/%t/"
     :sort-by :date     ;; how to sort the posts
     :category-index t) ;; generate category index or not
    ("index"

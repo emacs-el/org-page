@@ -67,7 +67,7 @@ BODY and push the result into cache and return it."
   "Return the name of the CATEGORY based on op/category-config-alist :label property. 
 Default to capitalized CATEGORY name if no :label property found."
   (let* ((config (cdr (or (assoc category op/category-config-alist)
-                          (assoc "blog" op/category-config-alist)))))
+                          (assoc "episodes" op/category-config-alist)))))
     (or (plist-get config :label)
         (capitalize category))))
 
@@ -176,7 +176,7 @@ similar to `op/render-header'. `op/highlight-render' is `js' or `htmlize'."
                                      #'op/get-file-category)
                                  filename))
               (config (cdr (or (assoc category op/category-config-alist)
-                               (assoc "blog" op/category-config-alist))))
+                               (assoc "episodes" op/category-config-alist))))
               (uri (funcall (plist-get config :uri-generator)
                             (plist-get config :uri-template) date title)))
          (ht ("show-meta" (plist-get config :show-meta))
@@ -270,7 +270,7 @@ ATTR-PLIST is the attribute plist of the buffer, retrieved by the combination of
                           (ht ("link" (op/generate-tag-uri tag-name))
                               ("name" tag-name))))
                      (plist-get info :tags) ", "))
-         (show-comment (eq category 'blog))
+         (show-comment (eq category 'episodes))
          (disqus-id (plist-get info :uri))
          (disqus-url (get-full-url disqus-id))
          (param-table (ht-create)))

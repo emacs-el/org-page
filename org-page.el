@@ -143,7 +143,7 @@ perfectly manipulated by org-page."
   (op/git-commit-changes repo-dir "add source index.org")
   (op/generate-about repo-dir)
   (op/git-commit-changes repo-dir "add source about.org")
-  (mkdir (expand-file-name "blog/" repo-dir) t))
+  (mkdir (expand-file-name "episodes/" repo-dir) t))
 
 (defun op/verify-configuration ()
   "Ensure all required configuration fields are properly configured, include:
@@ -232,7 +232,7 @@ responsibility to guarantee these parameters are valid."
    (let* ((i (read-string "Title: "))
           (u (read-string "URI(%y, %m and %d can be used to represent year, \
 month and day): " (unless (string= i "")
-                    (format-spec "/blog/%y/%m/%d/%t"
+                    (format-spec "/episodes/%y/%m/%d/%t"
                                  `((?y . "%y")
                                    (?m . "%m")
                                    (?d . "%d")
@@ -289,11 +289,11 @@ FILENAME: the file name of this post
 Note that this function does not verify the category and filename, it is users'
 responsibility to guarantee the two parameters are valid."
   (interactive
-   (let* ((c (read-string "Category: " "blog"))
+   (let* ((c (read-string "Category: " "episodes"))
           (f (read-string "filename: " "new-post.org")))
      (list c f)))
   (if (string= category "")
-      (setq category "blog"))
+      (setq category "episodes"))
   (if (string= filename "")
       (setq filename "new-post.org"))
   (unless (string-suffix-p ".org" filename)

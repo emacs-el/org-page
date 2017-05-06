@@ -120,7 +120,7 @@ content of the buffer will be converted into html."
                             filename))
     (plist-put attr-plist :category category)
     (setq cat-config (cdr (or (assoc category op/category-config-alist)
-                              (assoc "blog" op/category-config-alist))))
+                              (assoc "episodes" op/category-config-alist))))
     (plist-put attr-plist :uri (funcall (plist-get cat-config :uri-generator)
                                         (plist-get cat-config :uri-template)
                                         (plist-get attr-plist :date)
@@ -223,13 +223,13 @@ ORG-FILE is nil. This is the default function used to get a file's category,
 see `op/retrieve-category-function'. How to judge a file's category is based on
 its name and its root folder name under `op/repository-directory'."
   (cond ((not org-file)
-         (let ((cat-list '("index" "about" "blog"))) ;; 3 default categories
+         (let ((cat-list '("index" "about" "episodes"))) ;; 3 default categories
            (dolist (f (directory-files op/repository-directory))
              (when (and (not (equal f "."))
                         (not (equal f ".."))
                         (not (equal f ".git"))
                         (not (member f op/category-ignore-list))
-                        (not (equal f "blog"))
+                        (not (equal f "episodes"))
                         (file-directory-p
                          (expand-file-name f op/repository-directory)))
                (setq cat-list (cons f cat-list))))
@@ -239,7 +239,7 @@ its name and its root folder name under `op/repository-directory'."
         ((string= (expand-file-name "about.org" op/repository-directory)
                   (expand-file-name org-file)) "about")
         ((string= (file-name-directory (expand-file-name org-file))
-                  op/repository-directory) "blog")
+                  op/repository-directory) "episodes")
         (t (car (split-string (file-relative-name (expand-file-name org-file)
                                                   op/repository-directory)
                               "[/\\\\]+")))))
@@ -269,7 +269,7 @@ If COMPONENT-TABLE is nil, the publication will be skipped."
   "Rearrange and sort attribute property lists from FILE-ATTR-LIST. Rearrange
 according to category, and sort according to :sort-by property defined in
 `op/category-config-alist', if category is not in `op/category-config-alist',
-the default 'blog' category will be used. For sorting, later lies headmost."
+the default 'episodes' category will be used. For sorting, later lies headmost."
   (let (cat-alist cat-list)
     (mapc
      #'(lambda (plist)
@@ -293,7 +293,7 @@ the default 'blog' category will be used. For sorting, later lies headmost."
                            (plist-get
                             (cdr (or (assoc (plist-get plist1 :category)
                                             op/category-config-alist)
-                                     (assoc "blog"
+                                     (assoc "episodes"
                                             op/category-config-alist)))
                             :sort-by)))
                          (fix-timestamp-string
@@ -302,7 +302,7 @@ the default 'blog' category will be used. For sorting, later lies headmost."
                            (plist-get
                             (cdr (or (assoc (plist-get plist2 :category)
                                             op/category-config-alist)
-                                     (assoc "blog"
+                                     (assoc "episodes"
                                             op/category-config-alist)))
                             :sort-by))))
                         0)))))
@@ -317,7 +317,7 @@ file attribute property lists. PUB-BASE-DIR is the root publication directory."
      #'(lambda (cat-list)
          (unless (not (plist-get (cdr (or (assoc (car cat-list)
                                                  op/category-config-alist)
-                                          (assoc "blog"
+                                          (assoc "episodes"
                                                  op/category-config-alist)))
                                  :category-index))
            (setq cat-dir (file-name-as-directory
@@ -356,7 +356,7 @@ file attribute property lists. PUB-BASE-DIR is the root publication directory."
 					       (plist-get attr-plist :category)
 					       op/category-config-alist)
 					      (assoc
-					       "blog"
+					       "episodes"
 					       op/category-config-alist)))
 				     :sort-by))))
                                  ("post-uri" (plist-get attr-plist :uri))
