@@ -197,6 +197,10 @@ table th.right, table td.right {
     content: "\00B7 \00a0";
     color: #ccc;
 }
+.masthead a.rss {
+    background: url(/media/img/feed.png) no-repeat 0 0.25em;
+    padding-left: 18px;
+}
 /* searchform*/
 #searchform {
     position: absolute;
