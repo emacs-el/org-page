@@ -109,7 +109,7 @@ render from a default hash table."
                        (mapcar
                         #'(lambda (cat)
                             (ht ("category-uri"
-                                 (concat "/" (encode-string-to-url cat) "/"))
+                                 (concat "/" (encode-string-to-url cat)))
                                 ("category-name" (op/get-category-name cat))))
                         (sort (cl-remove-if
                                #'(lambda (cat)

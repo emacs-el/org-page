@@ -471,7 +471,7 @@ is the root publication directory."
 
 (defun op/generate-tag-uri (tag-name)
   "Generate tag uri based on TAG-NAME."
-  (concat "/tags/" (encode-string-to-url tag-name) "/"))
+  (concat "/tags/" (encode-string-to-url tag-name)))
 
 (defun op/update-tags (file-attr-list pub-base-dir)
   "Update tag pages. FILE-ATTR-LIST is the list of all file attribute property
