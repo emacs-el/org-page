@@ -239,10 +239,10 @@ table th.right, table td.right {
 .masthead img.avatar {
     position: relative;
     float: right;
-    margin-top: -37px;
+    margin-top: -24px;
     margin-bottom: -100%;
-    margin-right: 10%;
-    width: 100px;
+    margin-right: 12%;
+    width: 72px;
     background-color: #fff;
 }
 /* post */
