@@ -69,6 +69,10 @@ http:// or https://, http will be considered if not assigned."
   "The subtitle of entire site."
   :group 'org-page :type 'string)
 
+(defcustom op/site-description "An org-page-generated static website."
+  "A description about the site."
+  :group 'org-page :type 'string)
+
 (defcustom op/repository-org-branch "source"
   "The branch where org files stored on, it is within repository presented by
 `op/repository-directory'."

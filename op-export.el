@@ -393,7 +393,8 @@ publication directory."
       (ht ("header"
            (op/render-header
             (ht ("page-title" op/site-main-title)
-                ("author" (or user-full-name "Unknown Author")))))
+                ("author" (or user-full-name "Unknown Author"))
+                ("description" op/site-description))))
           ("nav" (op/render-navigation-bar))
           ("content"
            (op/render-content
